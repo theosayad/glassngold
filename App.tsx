@@ -55,11 +55,14 @@ const INITIAL_PORTFOLIO: HistoryItem[] = [
 
 const Header: React.FC = () => (
   <header className="py-8 sm:py-12 px-4 sm:px-6 text-center">
-    <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold mb-3 sm:mb-4 tracking-tighter">
+    <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold mb-3 sm:mb-4 tracking-tighter leading-[0.95]">
       GLA$$ <span className="text-yellow-500">&</span> GOLD
     </h1>
-    <p className="text-zinc-500 font-mono text-[11px] sm:text-sm uppercase tracking-widest">
+    <p className="text-zinc-500 font-mono text-[11px] sm:text-sm uppercase tracking-widest leading-relaxed">
       The Deconstructed Living Experience | Mar Mikhael • Gemmayze • Berlin
+    </p>
+    <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-yellow-500/20 bg-yellow-500/5 px-4 py-2 text-xs sm:text-sm md:text-base font-mono uppercase tracking-[0.16em] text-zinc-200/80">
+      Instant AI-powered property valuation (sector: distressed assets)
     </p>
   </header>
 );
@@ -92,16 +95,16 @@ const HistoryCard: React.FC<{ item: HistoryItem }> = ({ item }) => (
           {new Date(item.timestamp).toLocaleDateString()}
         </span>
       </div>
-      <p className="text-zinc-300 mb-5 sm:mb-6 italic leading-relaxed text-sm sm:text-base">"{item.result.listingDescription}"</p>
+      <p className="text-zinc-200/90 mb-5 sm:mb-6 italic leading-relaxed text-sm sm:text-base">"{item.result.listingDescription}"</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-5 sm:mb-6">
         {item.result.amenities.map((amenity, idx) => (
-          <div key={idx} className="flex items-center space-x-2 text-[13px] sm:text-sm text-zinc-400">
+          <div key={idx} className="flex items-center space-x-2 text-[13px] sm:text-sm text-zinc-400/90">
             <span className="w-1 h-1 bg-yellow-500 rounded-full" />
             <span>{amenity}</span>
           </div>
         ))}
       </div>
-      <div className="bg-white/5 p-4 rounded-lg border-l-4 border-yellow-500 italic text-[13px] sm:text-sm text-yellow-100/80">
+      <div className="bg-white/5 p-4 rounded-lg border-l-4 border-yellow-500 italic text-[13px] sm:text-sm text-yellow-100/90 leading-relaxed">
         “{item.result.broQuote}”
       </div>
     </div>
@@ -224,17 +227,17 @@ const App: React.FC = () => {
             ].join(" ")}
           >
             <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/5 transition-all duration-300" />
-            <div className="relative z-10">
+            <div className="relative z-10 max-w-2xl mx-auto">
               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-zinc-900 border border-zinc-800 rounded-2xl mx-auto mb-5 sm:mb-6 flex items-center justify-center group-hover:scale-110 group-hover:border-yellow-500/30 transition-all duration-300">
                 <svg className="w-7 h-7 sm:w-8 sm:h-8 text-zinc-500 group-hover:text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 4v16m8-8H4" />
                 </svg>
               </div>
-              <h2 className="text-lg sm:text-xl font-semibold mb-2">Upload Your Distressed Space</h2>
-              <p className="text-zinc-500 text-xs sm:text-sm font-mono uppercase tracking-tight leading-relaxed">
+              <h2 className="text-xl sm:text-2xl font-semibold mb-2 tracking-tight">Upload Your Distressed Space</h2>
+              <p className="text-zinc-500 text-xs sm:text-sm font-mono uppercase tracking-[0.18em] leading-relaxed">
                 Turn your "Bro, what happened here?" into "Habibi, what a concept!"
               </p>
-              <p className="mt-4 text-[11px] font-mono uppercase tracking-[0.2em] text-zinc-600">
+              <p className="mt-5 text-[11px] sm:text-xs font-mono uppercase tracking-[0.24em] text-zinc-600">
                 {isDragging ? "Drop the image here" : "or drag & drop"}
               </p>
             </div>
@@ -249,13 +252,13 @@ const App: React.FC = () => {
 
           {/* Privacy Disclaimer */}
           <div className="mt-6 flex flex-col items-center opacity-60 hover:opacity-100 transition-opacity">
-            <div className="flex items-center space-x-2 text-[11px] sm:text-[10px] font-mono uppercase text-zinc-500 tracking-tighter">
+            <div className="flex items-center space-x-2 text-[11px] sm:text-[10px] font-mono uppercase text-zinc-500 tracking-[0.14em]">
               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
               <span>Protocol: Off-the-books Confidentiality</span>
             </div>
-            <p className="mt-2 text-[11px] sm:text-[9px] font-mono text-zinc-600 max-w-sm leading-relaxed">
+            <p className="mt-3 text-[12px] sm:text-[10px] font-mono text-zinc-600 max-w-md leading-relaxed">
               BRO, IT'S SOUS-LA-TABLE: Your 'concept' is processed strictly in your browser's local memory. 
               No servers, no logs, no paper trail for the authorities. Your assets stay between you and your machine. 
               Very Swiss. Very discreet. Very tax-free.
@@ -271,7 +274,7 @@ const App: React.FC = () => {
 
         {/* Listings Section */}
         <div className="space-y-12">
-          <h2 className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] sm:tracking-[0.3em] text-zinc-600 mb-6 sm:mb-8 flex items-center">
+          <h2 className="text-xs sm:text-sm font-mono uppercase tracking-[0.22em] sm:tracking-[0.3em] text-zinc-500 mb-6 sm:mb-8 flex items-center">
             <span className="flex-grow h-[1px] bg-zinc-800 mr-4" />
             Active Portfolio
             <span className="flex-grow h-[1px] bg-zinc-800 ml-4" />
@@ -287,7 +290,7 @@ const App: React.FC = () => {
         <div className="max-w-md mx-auto glass-card border border-yellow-500/30 rounded-2xl sm:rounded-full px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-0 sm:justify-between shadow-2xl shadow-black/40">
           <div className="flex items-center space-x-3 min-w-0">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            <span className="text-[11px] font-mono uppercase text-zinc-400 leading-tight truncate">Agent Online: Elie "Fresh" Mansour</span>
+            <span className="text-xs font-mono uppercase text-zinc-400 leading-tight truncate">Agent Online: Elie "Fresh" Mansour</span>
           </div>
           <button 
             onClick={triggerUpload}
