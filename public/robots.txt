@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://theosayad.com/glassngold/sitemap.xml
