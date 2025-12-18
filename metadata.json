@@ -1,0 +1,7 @@
+{
+  "name": "GLA$$ & GOLD: The Deconstructed Living Experience",
+  "description": "A luxury real-estate appraisal app hosted by a delusional Beiruti 'Concept Store' owner who rebrands shattered windows and urban decay as 'Berlin-style' high-end industrial living.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
